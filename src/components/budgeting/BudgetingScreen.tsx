@@ -3,11 +3,13 @@ import BalanceScreen from './BalanceScreen';
 import Budget from './Budget';
 import Expenses from './Expenses';
 import ListExpenses from './ListExpenses';
-import { Expense } from '../../interfaces/interfaces';
+import { BudgetI, Expense } from '../../interfaces/interfaces';
 import expenseReducer from '../../reducers/expenseReducer';
+import { budgetReducer } from '../../reducers/budgetReducer';
 
 const BudgetingScreen = () => {
-  const INITIAL_STATE: Expense[] = [
+  // REDUCER FOR EXPENSES
+  const INITIAL_STATE_EXPENSES: Expense[] = [
     {
       uid: new Date().getTime(),
       title: 'Fix the car',
@@ -17,10 +19,25 @@ const BudgetingScreen = () => {
 
   const [expensesState, expensesDispatch] = useReducer(
     expenseReducer,
-    INITIAL_STATE,
+    INITIAL_STATE_EXPENSES,
+  );
+
+  // REDUCER FOR BUDGETS
+  const INITIAL_STATE_BUDGETS: BudgetI[] = [
+    {
+      uid: new Date().getTime(),
+      title: 'salary of programming',
+      value: 9000,
+    },
+  ];
+
+  const [budgetsState, budgetDispatch] = useReducer(
+    budgetReducer,
+    INITIAL_STATE_BUDGETS,
   );
 
   console.log(expensesState);
+  console.log(budgetsState);
   return (
     <div className="mx-5 mt-5">
       <h1 className="mb-5">Budget App</h1>
