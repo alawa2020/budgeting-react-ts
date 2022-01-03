@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import BalanceScreen from './BalanceScreen';
 import Budget from './Budget';
 import Expenses from './Expenses';
@@ -9,32 +9,47 @@ import { budgetReducer } from '../../reducers/budgetReducer';
 
 const BudgetingScreen = () => {
   // REDUCER FOR EXPENSES
-  const INITIAL_STATE_EXPENSES: Expense[] = [
-    {
-      uid: new Date().getTime(),
-      title: 'Fix the car',
-      value: 1000,
-    },
-  ];
+
+  const initExpenses = (): Expense[] => {
+    return (
+      JSON.parse(localStorage.getItem('list-expenses-budgeting') as string) ||
+      [] //as string buscar
+    );
+  };
 
   const [expensesState, expensesDispatch] = useReducer(
     expenseReducer,
-    INITIAL_STATE_EXPENSES,
+    [],
+    initExpenses,
   );
 
+  useEffect(() => {
+    localStorage.setItem(
+      'list-expenses-budgeting',
+      JSON.stringify(expensesState),
+    );
+  }, [expensesState]);
+
   // REDUCER FOR BUDGETS
-  const INITIAL_STATE_BUDGETS: BudgetI[] = [
-    {
-      uid: new Date().getTime(),
-      title: 'salary of programming',
-      value: 9000,
-    },
-  ];
+
+  const initBudgets = (): BudgetI[] => {
+    return (
+      JSON.parse(localStorage.getItem('list-budgets-budgeting') as string) || []
+    );
+  };
 
   const [budgetsState, budgetDispatch] = useReducer(
     budgetReducer,
-    INITIAL_STATE_BUDGETS,
+    [],
+    initBudgets,
   );
+
+  useEffect(() => {
+    localStorage.setItem(
+      'list-budgets-budgeting',
+      JSON.stringify(budgetsState),
+    );
+  }, [budgetsState]);
 
   console.log(typeof budgetDispatch);
   console.log(budgetsState);
