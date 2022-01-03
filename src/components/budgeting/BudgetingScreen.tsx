@@ -36,7 +36,7 @@ const BudgetingScreen = () => {
     INITIAL_STATE_BUDGETS,
   );
 
-  console.log(expensesState);
+  console.log(typeof budgetDispatch);
   console.log(budgetsState);
   return (
     <div className="mx-5 mt-5">
@@ -44,7 +44,7 @@ const BudgetingScreen = () => {
       <div className="row">
         {/* part of budgets and expenses */}
         <div className="col-5">
-          <Budget />
+          <Budget budgetDispatch={budgetDispatch} />
           <Expenses />
         </div>
         {/* end part of budgets and expenses */}
