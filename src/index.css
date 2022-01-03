@@ -82,3 +82,37 @@ img {
   font-size: xx-large;
   font-weight: bold;
 }
+
+/* ICONS */
+
+.icon-delete {
+  color: firebrick;
+  cursor: pointer;
+}
+
+.icon-edit {
+  color: cadetblue;
+  cursor: pointer;
+}
+
+.icon-edit-check {
+  color: cadetblue;
+  cursor: pointer;
+}
+.icon-edit-cancel {
+  color: firebrick;
+  cursor: pointer;
+}
+
+td > input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid cadetblue;
+  color: rgb(126, 154, 155);
+  font-weight: bold;
+}
+
+td > input:focus {
+  outline: none;
+}

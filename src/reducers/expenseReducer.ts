@@ -9,6 +9,11 @@ const expenseReducer = (state: Expense[], action: ExpenseAction): Expense[] => {
     case 'delete':
       return state.filter((expense) => expense.uid !== action.payload.id);
 
+    case 'edit':
+      return state.map((expense) =>
+        expense.uid === action.payload.uid ? action.payload : expense,
+      );
+
     default:
       return state;
   }
