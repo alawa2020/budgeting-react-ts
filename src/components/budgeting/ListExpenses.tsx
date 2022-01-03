@@ -19,7 +19,7 @@ const ListExpenses = ({ expensesState, expenseDispatch }: Props) => {
         </thead>
         <tbody>
           {expensesState.map((expense) => (
-            <tr>
+            <tr key={expense.uid}>
               <th>- {expense.title.toUpperCase()}</th>
               <td>{expense.value}</td>
               <td>

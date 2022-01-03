@@ -19,7 +19,7 @@ const Budget = ({ budgetDispatch }: Props) => {
       doAddBudget({
         uid: new Date().getTime(),
         title,
-        value,
+        value: Number(value),
       }),
     );
     resetForm();

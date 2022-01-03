@@ -18,7 +18,7 @@ const Expenses = ({ expenseDispatch }: Props) => {
       doAddExpense({
         uid: new Date().getTime(),
         title,
-        value,
+        value: Number(value),
       }),
     );
     resetForm();

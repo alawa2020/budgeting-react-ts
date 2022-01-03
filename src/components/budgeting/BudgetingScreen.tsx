@@ -51,7 +51,10 @@ const BudgetingScreen = () => {
 
         {/* part of balance and list of expenses */}
         <div className="col-7">
-          <BalanceScreen />
+          <BalanceScreen
+            expensesState={expensesState}
+            budgetsState={budgetsState}
+          />
           <ListExpenses
             expensesState={expensesState}
             expenseDispatch={expensesDispatch}
