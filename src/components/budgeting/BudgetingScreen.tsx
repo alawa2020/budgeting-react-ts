@@ -45,7 +45,7 @@ const BudgetingScreen = () => {
         {/* part of budgets and expenses */}
         <div className="col-5">
           <Budget budgetDispatch={budgetDispatch} />
-          <Expenses />
+          <Expenses expenseDispatch={expensesDispatch} />
         </div>
         {/* end part of budgets and expenses */}
 
